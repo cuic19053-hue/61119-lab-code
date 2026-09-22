@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📝 个人记事本</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- 顶部导航栏 -->
+    <header class="header">
+      <h1 class="logo">📝 记事本</h1>
+      <div class="header-actions">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="搜索笔记..." />
+        </div>
+        <button class="btn btn-primary" id="newNoteBtn">+ 新建笔记</button>
+      </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main">
+      <!-- 笔记列表 -->
+      <div class="notes-container">
+        <div class="notes-count" id="notesCount">加载中...</div>
+        <div class="notes-grid" id="notesGrid">
+          <!-- 笔记卡片动态渲染 -->
+        </div>
+        <!-- 空状态 -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+          <div class="empty-icon">📭</div>
+          <p>还没有笔记</p>
+          <p class="empty-hint">点击「新建笔记」开始记录吧</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- 编辑弹窗 -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h2 id="modalTitle">新建笔记</h2>
+          <button class="btn-icon" id="modalClose">&times;</button>
+        </div>
+        <div class="modal-body">
+          <input
+            type="text"
+            class="input-title"
+            id="noteTitle"
+            placeholder="笔记标题"
+            maxlength="255"
+            autofocus
+          />
+          <textarea
+            class="input-content"
+            id="noteContent"
+            placeholder="写点什么..."
+          ></textarea>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="cancelBtn">取消</button>
+          <button class="btn btn-primary" id="saveBtn">保存</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 删除确认弹窗 -->
+    <div class="modal-overlay" id="deleteOverlay">
+      <div class="modal modal-small">
+        <div class="modal-header">
+          <h2>确认删除</h2>
+          <button class="btn-icon" id="deleteClose">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>确定要删除这条笔记吗？此操作不可撤销。</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="deleteCancelBtn">取消</button>
+          <button class="btn btn-danger" id="deleteConfirmBtn">删除</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
